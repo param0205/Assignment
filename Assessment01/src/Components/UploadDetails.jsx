@@ -6,14 +6,19 @@ import { useDropzone } from "react-dropzone";
 import { Formik, Field, Form } from "formik";
 import { toast, ToastContainer } from "react-toastify"; // Optional: for notifications
 
-const UploadDetails = ({containerRef,sectionRefs,setIsContentVisible,isContentVisible}) => {
+const UploadDetails = ({
+  containerRef,
+  sectionRefs,
+  setIsContentVisible,
+  isContentVisible,
+}) => {
   const [fileData, setFileData] = useState(null);
   const [files, setFiles] = useState(null);
   const [parsedData, setParsedData] = useState(null);
   const [isDragActive, setIsDragActive] = useState(false);
 
   const [activeTab, setActiveTab] = useState("tab1");
-  const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
+  const isAboveMediumScreens = useMediaQuery("(min-width:780px)");
   const [formData, setFormData] = useState({
     // Fixed fields
     name: "",
@@ -62,7 +67,7 @@ const UploadDetails = ({containerRef,sectionRefs,setIsContentVisible,isContentVi
           const headers = rows[0];
           const values = rows[1];
           Data = headers.reduce((acc, header, index) => {
-            acc[header.trim()] = values[index]?.trim();
+            acc[JSON.parse(header.trim())] = JSON.parse(values[index]?.trim());
             return acc;
           }, {});
         }
@@ -91,14 +96,6 @@ const UploadDetails = ({containerRef,sectionRefs,setIsContentVisible,isContentVi
     reader.readAsText(file);
   };
 
-  const handleFileChange = (event) => {
-    const selectedFiles = event.target.files;
-    if (Array.isArray(selectedFiles)) {
-      setFiles(Array.from(selectedFiles));
-    } else setFiles(selectedFiles);
-    console.log("Files selected through input:", selectedFiles);
-    parseFile(selectedFiles[0]);
-  };
   const handleSubmit = (values) => {
     console.log("Form submitted with values:", values);
     console.log("Uploaded files:", files);
@@ -127,7 +124,7 @@ const UploadDetails = ({containerRef,sectionRefs,setIsContentVisible,isContentVi
           const headers = rows[0];
           const values = rows[1];
           headers.forEach((header, index) => {
-            parsedData[header.trim()] = values[index]?.trim();
+            parsedData[header.trim()] = JSON.parse(values[index]?.trim());
           });
         }
       } else {
@@ -177,149 +174,170 @@ const UploadDetails = ({containerRef,sectionRefs,setIsContentVisible,isContentVi
     "https://s3-alpha-sig.figma.com/img/16b9/71b5/374d35591cf107df0cbf15334675279b?Expires=1736726400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HOm0N8kwEjYLyLRnohYhRbb0qDMDTqQcnmu~ixW~D-jucpU1XcGE80kbQhMEY~yW19mWjo7M3BVMa5qp3d67egt~2pl69GMy8tw3bWdM93GlLhPrN16sXCnmhiX5ixM0mq1Sm4yUhQly~8Q1Lyhrb8fq~7nSHyS1BtvXzCEMVtNjr4yocSfZe8IYxFbWLQOdwgTFp2Pwiwx-3PnuFb08ogmlz8P0RaYGsmnYLJwM9bRhd4roXMKMH9VTM6abI7DxqLML21I8Yz~wS~XejsRKjnYMUrfZzYmn~ZMfXihVc5GWuc2BaGhmj-52F6iHdL6HC-8tqW7HyQ146hLhL62Gbw__";
 
   return (
-    <div className="containerUpload md:order-2 basis-3/6 mt-[80px]">
+    <div>
       {/* Left Section */}
       {isAboveMediumScreens ? (
         <>
-          <div className="left-section z-10 w-1/2 ml-[20px]">
-            <Formik
-              initialValues={{
-                department: null,
-                date: "",
-                description: "",
-              }}
-              onSubmit={handleSubmit}
-            >
-              {({ setFieldValue, values }) => (
-                <Form className="w-full">
-                  <div className="w-full place-content-center h-full">
-                    <div
-                      {...getRootProps()}
-                      className="justify-items-center place-content-center"
-                    >
-                      <input {...getInputProps()} className="h-full w-full" />
-                      <p className="text-1xl font-semibold text-black">
-                        Upload Your Invoice
-                      </p>
-                      <p className="text-black">
-                        To auto-populate fields and save time
-                      </p>
-                      <img
-                        className="img-layout"
-                        src={uploadGif}
-                        alt="Upload animation"
-                      />
-                      <label htmlFor="fileInput" className="upload-label">
-                        Upload File
+          <div className="containerUpload  mt-[80px]">
+            <div className="left-section z-10 w-1/2 ml-[20px]">
+              <Formik
+                initialValues={{
+                  department: null,
+                  date: "",
+                  description: "",
+                }}
+                onSubmit={handleSubmit}
+              >
+                {({ setFieldValue, values }) => (
+                  <Form className="w-full">
+                    <div className="w-full place-content-center h-full">
+                      <div
+                        {...getRootProps()}
+                        className="justify-items-center place-content-center"
+                      >
+                        <input {...getInputProps()} className="h-full w-full" />
+                        <p className="text-1xl font-semibold text-black">
+                          Upload Your Invoice
+                        </p>
+                        <p className="text-black">
+                          To auto-populate fields and save time
+                        </p>
                         <img
-                          src="/Icon.png"
-                          alt="arrow"
-                          className="icon-layout"
+                          className="img-layout"
+                          src={uploadGif}
+                          alt="Upload animation"
                         />
-                      </label>
-                      <p className="text-blue-400 text-1xl font-semibold mt-2">
-                        Click to upload{" "}
-                        <span className="text-slate-400 font-light">
-                          or Drag and drop
-                        </span>
-                      </p>
-                    </div>
-                    {/* <input
+                        <label htmlFor="fileInput" className="upload-label">
+                          Upload File
+                          <img
+                            src="/Icon.png"
+                            alt="arrow"
+                            className="icon-layout"
+                          />
+                        </label>
+                        <p className="text-blue-400 text-1xl font-semibold mt-2">
+                          Click to upload{" "}
+                          <span className="text-slate-400 font-light">
+                            or Drag and drop
+                          </span>
+                        </p>
+                      </div>
+                      {/* <input
                     type="file"
                     onChange={handleFileChange}
                     style={{ display: "none" }}
                     id="fileInput"
                   /> */}
-                    <ToastContainer />
-                    {fileData && (
-                      <div className="file-info">
-                        <p>Uploaded File: {fileData.name}</p>
-                      </div>
-                    )}
-                  </div>
-                </Form>
-              )}
-            </Formik>
+                      <ToastContainer />
+                      {fileData && (
+                        <div className="file-info">
+                          <p>Uploaded File: {fileData.name}</p>
+                        </div>
+                      )}
+                    </div>
+                  </Form>
+                )}
+              </Formik>
+            </div>
+            <div className="right-section w-1/2">
+              <VendorDetails
+                fileData={fileData}
+                setFileData={setFileData}
+                sectionRefs={sectionRefs}
+                containerRef={containerRef}
+                setIsContentVisible={setIsContentVisible}
+                isContentVisible={isContentVisible}
+                isAboveMediumScreens={isAboveMediumScreens}
+              />
+            </div>
           </div>
-          {/* <div className="right-section w-1/2">
-            <VendorDetails fileData={fileData} setFileData={setFileData} />
-          </div> */}
         </>
       ) : (
         <>
-          <div
-            className="left-section w-full
-              max-w-[-400px] md:max-w-[600px]"
-          >
-            <Formik
-              initialValues={{
-                department: null,
-                date: "",
-                description: "",
-              }}
-              onSubmit={handleSubmit}
+          <div className="mt-[80px]">
+            <div
+              className="medium-left-section w-full h-[600px]
+              max-w-[-400px] md:max-h-[600px]"
             >
-              {({ setFieldValue, values }) => (
-                <Form className="w-full">
-                  <div className="w-full place-content-center">
-                    <div
-                      {...getRootProps()}
-                      className="justify-items-center place-content-center "
-                    >
-                      <input {...getInputProps()} className="h-full w-full" />
-                      <p className="text-1xl font-semibold text-black">
-                        Upload Your Invoice
-                      </p>
-                      <p className="text-black">
-                        To auto-populate fields and save time
-                      </p>
-                      <img
-                        className="img-layout"
-                        src={uploadGif}
-                        alt="Upload animation"
-                      />
-                      <label htmlFor="fileInput" className="upload-label">
-                        Upload File
+              <Formik
+                initialValues={{
+                  department: null,
+                  date: "",
+                  description: "",
+                }}
+                onSubmit={handleSubmit}
+              >
+                {({ setFieldValue, values }) => (
+                  <Form className="w-full">
+                    <div className="w-full place-content-center">
+                      <div
+                        {...getRootProps()}
+                        className="justify-items-center place-content-center "
+                      >
+                        <input {...getInputProps()} className="h-full w-full" />
+                        <p className="text-1xl font-semibold text-black">
+                          Upload Your Invoice
+                        </p>
+                        <p className="text-black">
+                          To auto-populate fields and save time
+                        </p>
                         <img
-                          src="/Icon.png"
-                          alt="arrow"
-                          className="icon-layout"
+                          className="img-layout"
+                          src={uploadGif}
+                          alt="Upload animation"
                         />
-                      </label>
-                      <p className="text-blue-400 text-1xl font-semibold mt-2">
-                        Click to upload{" "}
-                        <span className="text-slate-400 font-light">
-                          or Drag and drop
-                        </span>
-                      </p>
-                    </div>
-                    {/* <input
+                        <label htmlFor="fileInput" className="upload-label">
+                          Upload File
+                          <img
+                            src="/Icon.png"
+                            alt="arrow"
+                            className="icon-layout"
+                          />
+                        </label>
+                        <p className="text-blue-400 text-1xl font-semibold mt-2">
+                          Click to upload{" "}
+                          <span className="text-slate-400 font-light">
+                            or Drag and drop
+                          </span>
+                        </p>
+                      </div>
+                      {/* <input
                     type="file"
                     onChange={handleFileChange}
                     style={{ display: "none" }}
                     id="fileInput"
                   /> */}
-                    <ToastContainer />
-                    {fileData && (
-                      <div className="file-info">
-                        <p>Uploaded File: {fileData.name}</p>
-                      </div>
-                    )}
-                  </div>
-                </Form>
-              )}
-            </Formik>
+                      <ToastContainer />
+                      {fileData && (
+                        <div className="file-info">
+                          <p>Uploaded File: {fileData.name}</p>
+                        </div>
+                      )}
+                    </div>
+                  </Form>
+                )}
+              </Formik>
+            </div>
+            <div className="right-section w-full">
+              <VendorDetails
+                fileData={fileData}
+                setFileData={setFileData}
+                sectionRefs={sectionRefs}
+                containerRef={containerRef}
+                setIsContentVisible={setIsContentVisible}
+                isContentVisible={isContentVisible}
+                isAboveMediumScreens={isAboveMediumScreens}
+
+              />
+            </div>
           </div>
-          {/* <div className="right-section w-full">
-            <VendorDetails fileData={fileData} setFileData={setFileData} />
-          </div> */}
         </>
       )}
 
       {/* Right Section */}
-      <div className="right-section w-1/2">
+      {/* <div className="right-section w-1/2">
         <VendorDetails fileData={fileData} setFileData={setFileData} sectionRefs ={sectionRefs} containerRef={containerRef} setIsContentVisible={setIsContentVisible} isContentVisible={isContentVisible} />
-      </div>
+      </div> */}
     </div>
   );
 };

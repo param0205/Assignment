@@ -22,6 +22,7 @@ const VendorDetails = ({
   setFileData,
   sectionRefs,
   containerRef,
+  isAboveMediumScreens,
   setIsContentVisible,
   isContentVisible
 }) => {
@@ -214,8 +215,8 @@ const VendorDetails = ({
                   <p className="text-black text-[20px] font-bold mb-2 justify-start font-inter mt-6">
                     Invoice Details
                   </p>
-                  <div className="mb-4 md:flex md:justify-between mt-6 ">
-                    <div className="md:w-1/2 mr-6">
+                  <div className="mb-4 justify-between mt-6 flex">
+                    <div className="w-1/2 mr-4">
                       <label
                         htmlFor="invoiceNumber"
                         className="text-slate-400 text-[16px] justify-start font-inter"
@@ -242,7 +243,7 @@ const VendorDetails = ({
                         </p>
                       )}
                     </div>
-                    <div className="md:w-1/2">
+                    <div className="w-1/2">
                       <label
                         htmlFor="invoiceDate"
                         className="text-slate-400 text-[16px] justify-start font-inter"
@@ -263,8 +264,8 @@ const VendorDetails = ({
                       )}
                     </div>
                   </div>
-                  <div className="mb-4 md:flex md:justify-between mt-6 ">
-                    <div className="md:w-1/2 mr-6">
+                  <div className="mb-4 flex justify-between mt-6 ">
+                    <div className="w-1/2 mr-6">
                       <label
                         htmlFor="totalAmount"
                         className="text-slate-400 text-[16px] justify-start font-inter"
@@ -287,7 +288,7 @@ const VendorDetails = ({
                         </p>
                       )}
                     </div>
-                    <div className="md:w-1/2">
+                    <div className="w-1/2">
                       <label
                         htmlFor="paymentTerms"
                         className="text-slate-400 text-[16px] justify-start font-inter"
@@ -315,8 +316,8 @@ const VendorDetails = ({
                       )}
                     </div>
                   </div>
-                  <div className="mb-4 md:flex md:justify-between mt-6 ">
-                    <div className="md:w-1/2 mr-6">
+                  <div className="mb-4 flex justify-between mt-6 ">
+                    <div className="w-1/2 mr-6">
                       <label
                         htmlFor="invoiceDueDate"
                         className="text-slate-400 text-[16px] justify-start font-inter"
@@ -336,7 +337,7 @@ const VendorDetails = ({
                         </p>
                       )}
                     </div>
-                    <div className="md:w-1/2">
+                    <div className="w-1/2">
                       <label
                         htmlFor="glPostDate"
                         className="text-slate-400 text-[16px] justify-start font-inter"
@@ -384,8 +385,8 @@ const VendorDetails = ({
                   <p className="text-black text-[20px] font-bold mb-2 justify-start font-inter mt-6">
                     Expense Details<span className="text-red-500">*</span>
                   </p>
-                  <div className="mb-4 md:flex md:justify-between mt-6 ">
-                    <div className="md:w-1/2 mr-6">
+                  <div className="mb-4 flex justify-between mt-6 ">
+                    <div className="w-1/2 mr-6">
                       <label
                         htmlFor="lineAmount"
                         className="text-slate-400 text-[16px] justify-start font-inter"
@@ -408,7 +409,7 @@ const VendorDetails = ({
                         </p>
                       )}
                     </div>
-                    <div className="md:w-1/2">
+                    <div className="w-1/2">
                       <label
                         htmlFor="departments"
                         className="text-slate-400 text-[16px] justify-start font-inter"
@@ -436,8 +437,8 @@ const VendorDetails = ({
                       )}
                     </div>
                   </div>
-                  <div className="mb-4 md:flex md:justify-between mt-6 ">
-                    <div className="md:w-1/2 mr-6">
+                  <div className="mb-4 flex justify-between mt-6 ">
+                    <div className="w-1/2 mr-6">
                       <label
                         htmlFor="Account"
                         className="text-slate-400 text-[16px] justify-start font-inter"
@@ -464,7 +465,7 @@ const VendorDetails = ({
                         </p>
                       )}
                     </div>
-                    <div className="md:w-1/2">
+                    <div className="w-1/2">
                       <label
                         htmlFor="locations"
                         className="text-slate-400 text-[16px] justify-start font-inter"
@@ -545,7 +546,7 @@ const VendorDetails = ({
                 </div>
               </div>
             </section>
-            <div className="bg-white border-t p-4 flex justify-end fixed bottom-0  w-1/2 right-0">
+            <div className= {`${isAboveMediumScreens ? "bg-white border-t p-4 flex justify-end fixed bottom-0  w-1/2 right-0" :'bg-white border-t p-4 flex justify-end bottom-0  w-full right-0'}`}>
               <div className="w-[48px] h-[48px]">
                 <img src="/Icon Button.png" alt="Icon Button"></img>
               </div>
@@ -555,13 +556,13 @@ const VendorDetails = ({
                   saveFormToLocalStorage(values);
                   alert("Draft Saved!");
                 }}
-                className="bg-white text-black px-4 py-2 mr-4 rounded flex w-[220px] max-w-[298px] justify-center place-content-center savebutton"
+                className={`${isAboveMediumScreens ? "px-4 py-2 mr-4  w-[220px] max-w-[298px] justify-center place-content-center savebutton" : "px-1 py-1 mr-4 rounded flex w-[150px] max-w-[298px] justify-center place-items-center savebutton"} bg-white text-black rounded flex`}
               >
                 Save as Draft
               </button>
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded flex w-[228px] max-w-[298px] justify-center place-content-center"
+                className="bg-blue-500 text-white px-4 py-2 rounded flex w-[228px] max-w-[298px] justify-center place-items-center"
               >
                 Submit
               </button>

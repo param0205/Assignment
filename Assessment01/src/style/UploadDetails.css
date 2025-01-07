@@ -14,6 +14,17 @@
   opacity: 0px;
   border: 1px dashed var(--Border-Secondary, #64748B)
 }
+.medium-left-section {
+  display: flex;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  justify-content: center;
+  gap: var(--SpacingM);
+  border-radius: var(--RadiusS);
+  border: 2px dashed #aaa;
+  opacity: 0px;
+  border: 1px dashed var(--Border-Secondary, #64748B)
+}
 
 .right-section {
   flex-direction: column;
