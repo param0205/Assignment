@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "../style/UploadDetails.css";
 import VendorDetails from "./VendorDetails";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../hooks/UseMediaQuery";
 import { useDropzone } from "react-dropzone";
 import { Formik, Field, Form } from "formik";
 import { toast, ToastContainer } from "react-toastify"; // Optional: for notifications
