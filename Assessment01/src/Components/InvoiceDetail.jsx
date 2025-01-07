@@ -8,6 +8,7 @@ const InvoiceDetail = () => {
   const navigate = useNavigate();
   const [selectedPage, setselectedPage] = useState("Vendor");
   const [TopOfPage, setTopOfPage] = useState(true);
+  const [isContentVisible, setIsContentVisible] = useState(false);
 
   // Logout handler
   const logout = () => {
@@ -43,8 +44,9 @@ const InvoiceDetail = () => {
               selectedPage={selectedPage}
               setselectedPage={setselectedPage}
               containerRef={containerRef} sectionRefs={sectionRefs}
+              setIsContentVisible={setIsContentVisible}
               />
-      <UploadDetails containerRef={containerRef} sectionRefs={sectionRefs}/>
+      <UploadDetails containerRef={containerRef} sectionRefs={sectionRefs} setIsContentVisible={setIsContentVisible} isContentVisible={isContentVisible}/>
     </div>
   );
 };

@@ -11,6 +11,7 @@ const Link = ({
   setselectedPage,
   containerRef,
   sectionRefs,
+  setIsContentVisible
 }) => {
   const spage = page.toLowerCase();
   return (
@@ -21,22 +22,22 @@ const Link = ({
       href={`#${spage}`}
       onClick={() => {
         setselectedPage(spage);
-        const container = containerRef.current;
-        let target = "";
-        if (page === "Vendor details") {
-          target = sectionRefs.section1.current;
-        } else if (page === "Invoice details") {
-          target = sectionRefs.section2.current;
-        } else {
-          target = sectionRefs.section3.current;
-        }
+        // const container = containerRef.current;
+        // let target = "";
+        // if (page === "Vendor details") {
+        //   target = sectionRefs.section1.current;
+        // } else if (page === "Invoice details") {
+        //   target = sectionRefs.section2.current;
+        // } else {
+        //   target = sectionRefs.section3.current;
+        // }
 
-        if (container && target) {
-          container.scrollTo({
-            top: target.offsetTop - container.offsetTop, // Calculate the position within the container
-            behavior: "smooth", // Smooth scrolling
-          });
-        }
+        // if (container && target) {
+        //   container.scrollTo({
+        //     top: target.offsetTop - container.offsetTop, // Calculate the position within the container
+        //     behavior: "smooth", // Smooth scrolling
+        //   });
+        // }
       }}
     >
       {page}

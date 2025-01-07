@@ -6,7 +6,7 @@ import { useDropzone } from "react-dropzone";
 import { Formik, Field, Form } from "formik";
 import { toast, ToastContainer } from "react-toastify"; // Optional: for notifications
 
-const UploadDetails = ({containerRef,sectionRefs}) => {
+const UploadDetails = ({containerRef,sectionRefs,setIsContentVisible,isContentVisible}) => {
   const [fileData, setFileData] = useState(null);
   const [files, setFiles] = useState(null);
   const [parsedData, setParsedData] = useState(null);
@@ -318,7 +318,7 @@ const UploadDetails = ({containerRef,sectionRefs}) => {
 
       {/* Right Section */}
       <div className="right-section w-1/2">
-        <VendorDetails fileData={fileData} setFileData={setFileData} sectionRefs ={sectionRefs} containerRef={containerRef} />
+        <VendorDetails fileData={fileData} setFileData={setFileData} sectionRefs ={sectionRefs} containerRef={containerRef} setIsContentVisible={setIsContentVisible} isContentVisible={isContentVisible} />
       </div>
     </div>
   );

@@ -121,6 +121,11 @@ button.submit-btn {
   border-radius: var(--RadiusFull);
   opacity: 0px;
 }
-.Vendor-icon-contianer{
-    
+.icon-button{
+  padding: 5px 0px!important;
+  margin-right: 5px!important;
+
+}
+.savebutton{
+  border:1px solid black !important
 }

@@ -3,6 +3,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Select from "react-select";
 import "../style/VendorDetails.css";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa"; 
 import { useState } from "react";
 import {
   currencyOptions,
@@ -21,6 +22,8 @@ const VendorDetails = ({
   setFileData,
   sectionRefs,
   containerRef,
+  setIsContentVisible,
+  isContentVisible
 }) => {
   // Load saved data from localStorage
   useEffect(() => {
@@ -133,7 +136,22 @@ const VendorDetails = ({
                     {values.vendorDesc}
                   </p>
                   <div className="justify-items-center">
-                    <p className="text-blue-400 text-1xl font-light mt-2">
+                    <p className="text-blue-400 text-1xl font-light mt-2 flex">
+                      <span>
+                        {/* <button
+                          // style={}
+                          className="icon-button"
+                          onClick={()=>{
+                            setIsContentVisible((prev) => !prev);
+                          }}
+                        >
+                          {isContentVisible ? (
+                            <FaChevronUp  /> // Up icon
+                          ) : (
+                            <FaChevronDown  /> // Down icon
+                          )}
+                        </button> */}
+                      </span>
                       View Vendor Details
                     </p>{" "}
                   </div>
@@ -537,7 +555,7 @@ const VendorDetails = ({
                   saveFormToLocalStorage(values);
                   alert("Draft Saved!");
                 }}
-                className="bg-white text-black px-4 py-2 mr-4 rounded flex w-[220px] max-w-[298px] justify-center place-content-center border-4 border-black-800"
+                className="bg-white text-black px-4 py-2 mr-4 rounded flex w-[220px] max-w-[298px] justify-center place-content-center savebutton"
               >
                 Save as Draft
               </button>
