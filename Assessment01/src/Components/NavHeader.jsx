@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "../style/InvoiceDetail.css";
-import UseMediaQuery from "../hooks/UseMediaQuery";
+import useMediaQuery from "../hooks/UseMediaQuery";
 import menu from "/menu-icon.svg";
 import decline from "/close-icon.svg";
 import AnchorLink from "react-anchor-link-smooth-scroll";
