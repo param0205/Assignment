@@ -70,8 +70,9 @@ const NavHeader = ({
         </div>
         {isAboveSmallScreen ? (
           <div className="tabs">
-            {tabs.map((tab) => (
-              <div className="navtab">
+            <div className="flex">
+            {tabs.map((tab,index) => (
+              <div className="navtab" key={index}>
                 <div
                   key={tab.id}
                   className={`tab ${
@@ -92,6 +93,7 @@ const NavHeader = ({
                 </div>
               </div>
             ))}
+            </div>
             <div className="justify-items-end w-full">
               <button
                 type="button"
@@ -100,7 +102,7 @@ const NavHeader = ({
                   localStorage.removeItem("userSession");
                   navigate("/");
                 }}
-                className="bg-white text-black px-4 py-2 mr-4 rounded flex w-[150px] max-w-[298px] justify-center place-content-center savebutton mt-2"
+                className="bg-white text-black px-4 py-1 mr-4 rounded flex w-[100px] max-w-[298px] justify-center place-content-center savebutton mt-2"
               >
                 Log out
               </button>
