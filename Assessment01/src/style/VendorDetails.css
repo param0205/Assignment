@@ -1,0 +1,26 @@
+.css-13cymwt-control {
+  width: 100% !important;
+  border-radius: 8px !important;
+}
+.css-1u9des2-indicatorSeparator {
+  width: 0px !important;
+}
+.Payment.input::placeholder {
+  color: black;
+}
+.Payment input[type="date"]::before {
+  content: "MM/DD/YYYY"; /* Placeholder-like text */
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(18, 16, 16)!important;
+  pointer-events: none; /* Prevent interference with date selection */
+  font-size: 14px;
+}
+input {
+  color: gray !important;
+}
+.css-1nmdiq5-menu{
+    color: black;
+}

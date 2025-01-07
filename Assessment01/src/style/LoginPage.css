@@ -1,0 +1,106 @@
+/* LoginPage.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('/Invoice-Image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    position: relative;
+  }
+  
+  .login-form-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .form-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .login-btn {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #131413;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #45a049;
+  }
+
+  .Create-btn {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #1b1b1b;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .Create-btn:hover {
+    background-color: #45a049;
+  }
+  
+  @media (max-width: 768px) {
+    .login-form-container {
+      width: 90%;
+    }
+  }
+  

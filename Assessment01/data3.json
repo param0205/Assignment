@@ -1,0 +1,17 @@
+{
+  "vendorName": "A-4Exterminator",
+  "invoiceDate": "2025-01-04",
+  "totalAmount": 3000.00,
+  "currency": "USD",
+  "departments": "IT",
+  "locations": "SF",
+  "poNumbers": "PO456789",
+  "invoiceNumber": "INV456789",
+  "accounts": "ACC45678",
+  "invoiceDueDate": "2025-01-29",
+  "glPostDate": "2025-01-08",
+  "paymentTerms": "COD",
+  "lineAmount": 3000.00,
+  "comment": "COD payment required",
+  "expDecription": "Pest eradication project"
+}

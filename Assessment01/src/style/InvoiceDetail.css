@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0px;
+  z-index: 15;
+  margin-bottom: 24px;
+}
+.img-container {
+  width: 24px;
+  height: 24px;
+  padding: 6px 4px 6px 4px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.header {
+  background-color: #ffffff;
+  flex: 1;
+  display: flex;
+  justify-content: start;
+  color: black;
+  height: 44px;
+  width: 706px;
+  padding: 8px 0px 8px 0px;
+}
+
+.header h1 {
+  color: #0d0f11;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-left: 4px;
+}
+
+.tabs {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  background-color: #ffffff;
+  width: 670px;
+  height: 44px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.navtab {
+  display: flex;
+  text-align: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  width: 146px;
+  height: 44px;
+  padding: var(--SpacingS) var(--SpacingM) var(--SpacingS) var(--SpacingM);
+  gap: var(--SpacingXS);
+  border: 0px 0px 2px 0px;
+  opacity: 0px;
+}
+.tab {
+  color: #0d0f11;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
+
+.tab:last-child {
+  border-right: none;
+}
+
+.tab.active {
+  color: #1787e0;
+  border-bottom: 2px solid var(--Border-Brand, #1787e0);
+  font-weight: bold;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.tab-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.back-button-image {
+  width: 16px;
+  height: 16px;
+  top: 6px;
+  left: 4px;
+  gap: 0px;
+  border: 2px 0px 0px 0px;
+  opacity: 0px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+.side-icon {
+  color: #0d0f11;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
+.side-icon.active {
+  color: #1787e0;
+  font-weight: bold;
+}
+@media (min-width: 640px) {
+  .container {
+      max-width: 100vw;
+  }
+}
