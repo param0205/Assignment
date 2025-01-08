@@ -48,7 +48,10 @@ const NavHeader = ({
   const isAboveSmallScreen = useMediaQuery("(min-width : 768px)");
 
   const handleBackClick = () => {
-    alert("Back button clicked! Implement navigation here.");
+    localStorage.removeItem("formData");
+    localStorage.removeItem("userSession");
+    navigate("/");
+        // alert("Back button clicked! Implement navigation here.");
   };
 
   return (
